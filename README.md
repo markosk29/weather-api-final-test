@@ -20,7 +20,7 @@ temperatures: an array of 24 float values, each up to one decimal place, denotin
 
 
 
-Your task is to complete the given project so that it passes all the test cases when running the provided unit tests. The project by default supports the use of the SQLite3 database. Implement the POST request to /weather first because testing the other methods require POST to work correctly.
+Your task is to complete the given project so that it passes all the test cases when running the provided unit tests.  Implement the POST request to /weather first because testing the other methods require POST to work correctly.
 
 
 ## Environment:
