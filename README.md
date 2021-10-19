@@ -1,5 +1,5 @@
 ## Spring Boot: Weather API
-```
+
 In this challenge, you are part of a team that is building a travel company platform. One requirement is for a REST API service to provide weather information. Your task is to add functionality to add and delete weather information as well as perform some queries. You'll be dealing with typical information for weather data like latitude, longitude, temperature, etc.
 
 
@@ -14,11 +14,15 @@ lat: the latitude (up to 4 decimal places) of the location of the record
 lon: the longitude (up to 4 decimal places) of the location of the record
 city: the name of the city of the record
 state: the name of the state of the record
+
+
 temperatures: an array of 24 float values, each up to one decimal place, denoting the hourly temperatures of the record in Celsius
  
 
 Here is an example of a weather data JSON object:
 
+
+```
 {
    "id": 1,
    "date": "1985-01-01",
@@ -29,6 +33,7 @@ Here is an example of a weather data JSON object:
    "temperatures": [17.3, 16.8, 16.4, 16.0, 15.6, 15.3, 15.0, 14.9, 15.8, 18.0, 20.2, 22.3, 23.8, 24.9, 25.5, 25.7, 24.9, 23.0, 21.7, 20.8, 29.9, 29.2, 28.6, 28.1]
 }
  
+```
 
 The REST service must expose the /weather endpoint, which allows for managing the collection of weather records in the following way:
 
@@ -60,7 +65,6 @@ if there is no record in the collection with the given id, the response code is 
 
 Your task is to complete the given project so that it passes all the test cases when running the provided unit tests. The project by default supports the use of the SQLite3 database. Implement the POST request to /weather first because testing the other methods require POST to work correctly.
 
-```
 
 ## Environment:
 - Java version: 1.8
