@@ -8,13 +8,14 @@ The definitions and detailed requirements list are written below. You will be gr
 
 Each weather data is a JSON object describing hourly temperatures recorded at a given location on a given date. Each such object has the following properties:
 
+```
 id: the unique integer ID of the object
 date: the date, in YYYY-MM-DD format, denoting the date of the record
 lat: the latitude (up to 4 decimal places) of the location of the record
 lon: the longitude (up to 4 decimal places) of the location of the record
 city: the name of the city of the record
 state: the name of the state of the record
-
+```
 
 temperatures: an array of 24 float values, each up to one decimal place, denoting the hourly temperatures of the record in Celsius
  
