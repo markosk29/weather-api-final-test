@@ -1,4 +1,4 @@
-## 1. Spring Boot: Weather API
+## Spring Boot: Weather API
 ```
 In this challenge, you are part of a team that is building a travel company platform. One requirement is for a REST API service to provide weather information. Your task is to add functionality to add and delete weather information as well as perform some queries. You'll be dealing with typical information for weather data like latitude, longitude, temperature, etc.
 
