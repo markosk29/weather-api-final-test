@@ -15,10 +15,8 @@ lat: the latitude (up to 4 decimal places) of the location of the record
 lon: the longitude (up to 4 decimal places) of the location of the record
 city: the name of the city of the record
 state: the name of the state of the record
-```
-
 temperatures: an array of 24 float values, each up to one decimal place, denoting the hourly temperatures of the record in Celsius
- 
+ ```
 
 Here is an example of a weather data JSON object:
 
