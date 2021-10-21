@@ -43,8 +43,6 @@ public class WeatherService {
     }
 
     public List<WeatherJSON> getWeatherInfo(String dateString, String city, String sort) {
-       //return weatherRepository.findAllCustom(date, city, sort);
-
         List<Weather> weatherList;
 
         if (dateString != null && city != null) {

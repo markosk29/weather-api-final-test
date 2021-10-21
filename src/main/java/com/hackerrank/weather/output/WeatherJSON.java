@@ -8,9 +8,7 @@ import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Builder
 @Getter
@@ -43,15 +41,5 @@ public class WeatherJSON {
                 .date(weather.getDate())
                 .temperatures(weather.getTemperatures())
                 .build();
-    }
-
-    public WeatherJSON(Integer id, LocalDate date, Float lat, Float lon, String city, String state, BigDecimal temperature) {
-        this.id = id;
-        this.date = date.toString();
-        this.lat = lat;
-        this.lon = lon;
-        this.city = city;
-        this.state = state;
-        this.getTemperatures().add(Double.valueOf(temperature.toString()));
     }
 }
