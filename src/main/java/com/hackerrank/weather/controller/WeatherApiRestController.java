@@ -5,6 +5,7 @@ import com.hackerrank.weather.output.WeatherJSON;
 import com.hackerrank.weather.service.WeatherService;
 import com.hackerrank.weather.utils.Patterns;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -28,25 +29,49 @@ public class WeatherApiRestController {
         this.weatherService = weatherService;
     }
 
-    @GetMapping("/weather")
-    public List<WeatherJSON> getWeatherInfo(@Valid @Pattern(regexp = Patterns.YYYY_MM_DD_REGEXP) @RequestParam(required = false) String date, @RequestParam(required = false) String city, @RequestParam(required = false) String sort){
-       return null;
+    @GetMapping(path = "/weather", produces = "application/json")
+    @Operation(summary = "Get weather info", tags = {"Weather",},
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Returns a list of weather info based on the input criteria," +
+                            " or all if no criteria is given.",
+                            content = @Content(mediaType = "application/json",
+                                    array = @ArraySchema(schema = @Schema(implementation =  WeatherJSON.class)))),
+                    @ApiResponse(responseCode = "500", description = "Internal server error.")
+            })
+    public List<WeatherJSON> getWeatherInfo(@Valid @Pattern(regexp = Patterns.YYYY_MM_DD_REGEXP)
+                                            @RequestParam(required = false) String date,
+                                            @RequestParam(required = false) String city,
+                                            @RequestParam(required = false) String sort){
+
+       return weatherService.getWeatherInfo(date, city, sort);
     }
 
-    @GetMapping("/weather/{id}")
+    @GetMapping(path ="/weather/{id}", produces = "application/json")
+    @Operation(summary = "Get weather info by id", tags = {"Weather",},
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Returns the weather info of the given id.",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation =  WeatherJSON.class))),
+                    @ApiResponse(responseCode = "404", description = "Weather entity not found!"),
+                    @ApiResponse(responseCode = "500", description = "Internal server error.")
+            })
     public ResponseEntity<WeatherJSON> getWeatherById(@Valid @NotNull @PathVariable Integer id) {
-       return null;
+       return new ResponseEntity<>(weatherService.getWeather(id), HttpStatus.OK);
     }
-
 
     /**
      * Submit weather.
      *
      */
-    @PostMapping(path = "/weather")
+    @PostMapping(path = "/weather", consumes = "application/json", produces = "application/json")
+    @Operation(summary = "Save a weather to the embedded DB.", tags = {"Weather",},
+            responses = {
+                    @ApiResponse(responseCode = "201", description = "Returns a JSON containing the saved weather.",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation =  WeatherJSON.class))),
+                    @ApiResponse(responseCode = "500", description = "Internal server error.")
+            })
     public ResponseEntity<WeatherJSON> submitWeather(@RequestBody @Valid final WeatherInput weatherInput) {
-       return null;
+       return new ResponseEntity<>(weatherService.addWeather(weatherInput), HttpStatus.CREATED);
     }
-
-
 }

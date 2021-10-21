@@ -42,5 +42,12 @@ public class Weather {
     @Column(name = "temperature")
     private List<BigDecimal> temperatures;
 
-
+    public Weather(int id, LocalDate date, Float lat, Float lon, String city, String state) {
+        this.id = id;
+        this.date = date;
+        this.lat = lat;
+        this.lon = lon;
+        this.city = city;
+        this.state = state;
+    }
 }
